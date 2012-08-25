@@ -12,6 +12,10 @@
 				var time_offset=(now-bombay)/60000;
 				var bombayDate=new Date(bombay);
 				var day_offset=now.getDate()-bombayDate.getDate();
+				var year_offset=now.getFullYear()-bombayDate.getFullYear();
+				var month_offset=now.getMonth()-bombayDate.getMonth();
+					day_offset=day_offset+year_offset*365+month_offset*30;
+					
 				var bombay_hours=bombayDate.getHours();
 				if(day_offset<1){
 						if(time_offset<5){

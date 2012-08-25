@@ -78,7 +78,7 @@
 				renderTagView();
 		}
 		if(ifpeople_url&&ifpeople_statuses===false&&ifone_status===false){
-			init_seeAlso();
+			//init_seeAlso();
 		}//ifpeople_url end
 		//我的广播	
 		if(ifpeople_url&&ifpeople_statuses===true){
