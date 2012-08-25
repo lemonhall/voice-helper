@@ -1,4 +1,17 @@
 	var ifpeople_url=location.href.slice(0,29)=="http://www.douban.com/people/";
+	var url_array=location.href.split("/");
+	var ifpeople_statuses=false;
+	var ifone_status=false;	
+	if(url_array[url_array.length-3]==="status"){
+		ifone_status=true;
+	}else{
+		ifone_status=false;
+	}
+	if(/statuses/.test(url_array[url_array.length-1])){
+		ifpeople_statuses=true;
+	}else{
+		ifpeople_statuses=false;
+	}
 	var getUserName=function(){
 		var name=$(".info h1").html();
 		var temp=name.split('\n');
@@ -64,8 +77,16 @@
 		if(urlParams["renderTagView"]==="true"){
 				renderTagView();
 		}
-		if(ifpeople_url){
+		if(ifpeople_url&&ifpeople_statuses===false&&ifone_status===false){
 			init_seeAlso();
+		}//ifpeople_url end
+		//我的广播	
+		if(ifpeople_url&&ifpeople_statuses===true){
+			init_timezone();
+		}//ifpeople_url end
+		//进入某一条广播之后	
+		if(ifpeople_url&&ifone_status===true){
+			init_onestatus_timezone();
 		}//ifpeople_url end	
 	}
 	router();
