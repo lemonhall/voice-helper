@@ -30,6 +30,7 @@
               "douban/grouper.js",
               "douban/tag/fav.js",
               "douban/voice/voice.js",
+              "douban/timezone.js",              
               "douban/update.js"],
       "run_at" : "document_end",
       "all_frames" : false
@@ -57,6 +58,7 @@
       "js" : ["lib/jquery-1.7.2.min.js",
               "lib/underscore-min.js",
               "douban/tag/tagsView.js",
+              "douban/timezone.js",              
               "douban/seeAlso/seeAlso.js"],
       "run_at" : "document_end",
       "all_frames" : false

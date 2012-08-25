@@ -87,7 +87,54 @@
 	//==============================================================================
 	//定位p.text a对象，然后开始修改吧，少年
 		var user_actions_obj=myself.find("div.actions");
-			user_actions_obj.parent().parent().parent().css("background-color","#E9F4E9");
+		var counter=status.length;
+		var color="#E9F4E9";
+		if(counter>5) {
+			color="#f4f4e9";
+		};
+		if(counter>10) {
+			color="#e7e7cf";
+		};
+		if(counter>15){
+			color="#dadab5";
+		}
+		if (counter>20) {
+			color="#e9f4e9";
+		};
+		if(counter>25){
+			color="#cfe7cf";
+		}
+		if(counter>30){
+			color="#b5dab5";
+		}
+		if(counter>35){
+			color="#9bcd9b";
+		}
+		if(counter>40){
+			color="#80c080";
+		}
+		// if(counter>20){
+		// 	color="#fff0de";
+		// }
+		// if(counter>23){
+		// 	color="#ffe4c4";
+		// }
+		// if(counter>26){
+		// 	color="#66b366";
+		// }
+		// if(counter>29){
+		// 	color="#b5b5da";
+		// }				
+		// if(counter>32){
+		// 	color="#9b9bcd";
+		// }if(counter>35){
+		// 	color="#8080c0";
+		// }if(counter>38){
+		// 	color="#dab5da";
+		// }if(counter>41){
+		// 	color="#cd9bcd";
+		// }
+		user_actions_obj.parent().parent().parent().css("background-color",color);
 			//加入按钮并绑定数据
 			user_actions_obj.find(".ban_temply_btn").after("&nbsp;&nbsp;<a class='folder_topic'>展开该话题?"+"/共有"+(status.length-1).toString()+"人关注</a>");
 		var folder=user_actions_obj.find(".folder_topic");
