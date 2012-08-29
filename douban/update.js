@@ -60,6 +60,7 @@
 						initPlayer();
 					}
 				init_timezone();
+				init_pasteAPI();
 		}//if_update_url end	
 	};
 
