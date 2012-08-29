@@ -46,7 +46,7 @@ var	__uploadImg=function (file) {
 		return new_url;
 	},
 	__UploadToIsay=function(small_url,comments){
-		var comments='test'||comments;
+		var comments=comments||'test';
 		var xhr = new XMLHttpRequest();
 		var deferred = $.Deferred(); 
 		var promise = deferred.promise();
@@ -54,7 +54,7 @@ var	__uploadImg=function (file) {
 		var fd = new FormData();
 
 			fd.append("ck",ck);
-			fd.append("comment","test");			
+			fd.append("comment",comments);			
 			fd.append("uploaded",small_url);
 
 		xhr.onerror = function(e) {
@@ -82,23 +82,31 @@ return {
 	},
 	//依靠日记来保存数据的原型
 	//这应该是向外暴露的公共方法
-	uploadToServer:function(file){
+	uploadToServer:function(file,say){
+		//console.log(file);
+		//console.log(say);
 			//将图像上传到服务器
+		var deferred = $.Deferred(); 
+		var promise = deferred.promise();
 			__uploadImg(file)
 			.then(function(xhr){
 				var img=JSON.parse(xhr.responseText);
 		
 				var rawImg=__getRawUrl(img.url);
 					//上传到服务器之后，再上传到我说的服务接口上去
-					__UploadToIsay(img.url,"TEST")
+					__UploadToIsay(img.url,say)
 					.then(function(xhr){
 							console.log("完成");
+							deferred.resolve(xhr);
 					},function(e){
 						console.log("uploadToImgServer:uploadToServer上传Isay时报错.");
+						deferred.reject(e);
 					});//END OF 上传到我说			
 			},function(e){
 				console.log("uploadToImgServer:uploadToServer上传图像时报错.");
+						deferred.reject(e);
 			});
+		return promise;
 	}//uploadToServer end
 };//pulic method exports end
 })();

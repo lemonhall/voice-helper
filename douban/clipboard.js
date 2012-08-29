@@ -10,10 +10,28 @@
 			$(this).pixastic("desaturate");
 		});
 	},
-	upload_toServer=function(file){
+	init_uploadView=function(file){
+		var clipboard_div=$("#clipboard");
+		var clipboard_img=$("#myClipboardimg");
+		$("#db-isay #isay-submit").hide();
+		$("#db-isay .btn-group").hide();
+		//<input id="isay-submit" tabindex="1" type="submit" value="我说">
+		$("#db-isay #isay-submit").after("<input id='my-isay-img-submit' tabindex='1' type='' value='哈哈哈'>");
+		$("#my-isay-img-submit").show();
+		$("#my-isay-img-submit").bind("click",function(){
+				var say=$("#isay-cont").val();
+				if(say){
+					upload_toServer(file,say);
+				}
+		});
+		//upload_toServer(file);
+	},
+	upload_toServer=function(file,comments){
 		//取得模块
 		var upload=save.savTodoubanImgServer.uploadToServer;
-			upload(file);
+			upload(file,comments).then(function(xhr){
+				window.location.reload();
+			});
 
 	},
 	init_pasteAPI=function(){
@@ -26,11 +44,10 @@
 					var item=items[i];
 					if(/image/.test(item.type)){
 						var file = item.getAsFile();
-						console.log(file);
+						//console.log(file);
 						var url=window.webkitURL.createObjectURL(file);
-						upload_toServer(file);
 						clipboard_div.html("<img id='myClipboardimg' src='"+url+"'>");
-						init_pixastic();						
+						init_uploadView(file);						
 					}			
 				}
 		});
