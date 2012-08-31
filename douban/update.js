@@ -39,22 +39,22 @@
 		if(ifupdate_url){
 				//初始化的一些代码
 				//onoff_feature("filter");	
-				// var options=read_options();	
+				 var options=read_options();	
 
-				// 	if(options.filter){
-				// 			if(urlParams["auto_roll"]==="1"){setTimeout(rollpage,2000);}
-				// 			init_Menu();
-				// 			init_rollpage();				
-				// 			var overlay_background=$("#lemon-overlay");
-				// 			overlay_background.hide();							
-				// 			init_reshare_btn();	
-				// 			init_filter();
-				// 			init_grouper();
-				// 	}
-				// 	if(options.fav){
-				// 			initFavView();
-				// 			addFavBtn();
-				// 	}
+					if(options.filter){
+							if(urlParams["auto_roll"]==="1"){setTimeout(rollpage,2000);}
+							init_Menu();
+							init_rollpage();				
+							var overlay_background=$("#lemon-overlay");
+							overlay_background.hide();							
+							init_reshare_btn();	
+							init_filter();
+							init_grouper();
+					}
+					if(options.fav){
+							initFavView();
+							addFavBtn();
+					}
 				// 	if(options.voice){	
 				// 		initVoiceAction();
 				// 		initPlayer();

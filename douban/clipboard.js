@@ -42,9 +42,10 @@
 				var items=e.originalEvent.clipboardData.items;
 				for(var i=0;i<items.length;i++){
 					var item=items[i];
+					console.log(item);
 					if(/image/.test(item.type)){
 						var file = item.getAsFile();
-						//console.log(file);
+						console.log(file);
 						var url=window.webkitURL.createObjectURL(file);
 						clipboard_div.html("<img id='myClipboardimg' src='"+url+"'>");
 						init_uploadView(file);						
