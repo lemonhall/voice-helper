@@ -33,7 +33,8 @@
               "douban/timezone.js",
               "douban/imageEditor/pixastic.custom.js",
               "douban/clipboard/savTodoubanImgServer.js",              
-              "douban/clipboard.js",                            
+              "douban/clipboard.js",    
+              "douban/search.js",                                      
               "douban/update.js"],
       "run_at" : "document_end",
       "all_frames" : false
@@ -61,7 +62,8 @@
       "js" : ["lib/jquery-1.7.2.min.js",
               "lib/underscore-min.js",
               "douban/tag/tagsView.js",
-              "douban/timezone.js",              
+              "douban/searchView.js",
+              "douban/timezone.js",
               "douban/seeAlso/seeAlso.js"],
       "run_at" : "document_end",
       "all_frames" : false

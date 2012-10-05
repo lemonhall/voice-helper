@@ -55,6 +55,7 @@
 							initFavView();
 							addFavBtn();
 					}
+					initSearchView();
 				// 	if(options.voice){	
 				// 		initVoiceAction();
 				// 		initPlayer();

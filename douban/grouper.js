@@ -30,11 +30,31 @@
 				var dataitem={};
 					dataitem.data_description=data_description;
 						dataitem.data_timestamp=Date.now();
-							newarray.push(dataitem);
-							newarray.push(newitem);
+						newarray.push(newitem);
 				localStorage.setItem(data_object, JSON.stringify(newarray));
+				//加入TIME——INDEXER以及对dat_description的搜索支持
+				buildTimeIndexer(data_object,dataitem);
 			}//判断key/value存储当中dataobject_url是否计入存储的endif
 			return status;
+	},
+	buildTimeIndexer=function(data_object,dataitem){
+			var data_object=data_object||"";
+			var dataitem=dataitem;
+				dataitem.data_object=data_object;
+			var statusIndexer=[];
+			if(dataitem.data_description!="照片"){
+				var retrievedObject = localStorage.getItem("statusTimeIndexer");
+				if(retrievedObject===null){
+					localStorage.setItem("statusTimeIndexer","[]");
+					retrievedObject = localStorage.getItem("statusTimeIndexer");
+				}
+				statusIndexer=JSON.parse(retrievedObject);
+				statusIndexer.push(dataitem);
+				
+				statusIndexer.sort(function(a,b) {return (a.time > b.time) ? 1 : ((b.time > a.time) ? -1 : 0);} );
+				//console.log(statusIndexer);
+				localStorage.setItem("statusTimeIndexer", JSON.stringify(statusIndexer));
+			}
 	},
 	expand_topic=function(myself,data_sid){
 		var status=JSON.parse(myself.attr("data-status"));
@@ -42,8 +62,8 @@
 		var user_quote_obj=u_a_o.find("div.bd blockquote");
 			user_quote_obj.before("楼主说：");
 		jQuery.each(status,function(index, onestatu){
-		//不去管第一条META信息，以及本条目本身
-		if((index!=0)&&(onestatu.data_sid!=data_sid)){	
+		//不去管本条目本身
+		if(onestatu.data_sid!=data_sid){	
 			if(onestatu.user_quote!=null){
 			//加入用户的发言信息
 			var before_quote="<a href='"+onestatu.uid_url+"'>"+onestatu.user_name+"</a>&nbsp;"+onestatu.time+"&nbsp;说:"+"<blockquote><p>"+onestatu.user_quote+"</p></blockquote>";

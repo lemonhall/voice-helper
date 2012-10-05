@@ -77,6 +77,9 @@
 		if(urlParams["renderTagView"]==="true"){
 				renderTagView();
 		}
+		if(urlParams["renderSearchView"]==="true"){
+				renderSearchView();
+		}
 		if(ifpeople_url&&ifpeople_statuses===false&&ifone_status===false){
 			//init_seeAlso();
 		}//ifpeople_url end
