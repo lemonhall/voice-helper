@@ -52,7 +52,7 @@ var	search_temple=function(){
 		// statusIndexer.data_object
 		jQuery.each(statusIndexer,function(index, onestatu){	
 				var ifexist=onestatu.data_description.indexOf(srhTerm);
-				if(ifexist>0){
+				if(ifexist>=0){
 					result.push(onestatu);
 				}		
 		});
