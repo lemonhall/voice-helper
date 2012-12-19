@@ -56,10 +56,10 @@
 							addFavBtn();
 					}
 					initSearchView();
-				// 	if(options.voice){	
-				// 		initVoiceAction();
-				// 		initPlayer();
-				// 	}
+					if(options.voice){	
+						initVoiceAction();
+						initPlayer();
+					}
 				// init_timezone();
 				init_pasteAPI();
 		}//if_update_url end	
