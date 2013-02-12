@@ -13,6 +13,7 @@
   "background": {
      "scripts": ["lib/jquery-1.7.2.min.js",
                  "lib/underscore-min.js",
+                 "douban/socket.io.js",
                  "douban/voice/common.js",
                  "douban/voice/webSqlWarpper.js",
                  "douban/voice/savToSina.js",              

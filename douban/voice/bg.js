@@ -72,7 +72,23 @@ chrome.extension.onMessage.addListener(
     	},function(e){
     			sendResponse(e);
     	});      
-    }      
+    }
+    //将加好友的实际请求发送给node.js的server，然后由server控制
+    //phantomjs来加某个人
+    if (request.method == "setFriendShip"){
+    	//console.log(request);
+    	if(request.id!=undefined){
+			socket.emit('setFriendShip', {user_id:request.id});
+		}     
+    }
+    //将加好友的实际请求发送给node.js的server，然后由server控制
+    //phantomjs来加某个人
+    if (request.method == "unsetFriendShip"){
+    	//console.log(request);
+    	if(request.id!=undefined){
+			socket.emit('unsetFriendShip', {user_id:request.id});
+		}     
+    }       
     if (request.method == "heartBeat"){
     	sendResponse(1);
 	}
