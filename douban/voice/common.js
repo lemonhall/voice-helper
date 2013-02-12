@@ -8,6 +8,14 @@ var save={};
 var VoiceCache={};
 
 
+var socket = io.connect('http://localhost:9000');
+
+	  // socket.on('hello', function (data) {
+	  //     //socket.emit('news', {my:"Hello"});
+	  //     console.log(data.my);
+	  // });
+
+
 //用FileReader将任何BLOB对象转换成BASE64编码
 //loadBlobToBase64(xhr.response).then(function(base64){});
 var	loadBlobToBase64=function(blob){

@@ -135,11 +135,17 @@
 		add_contract_pluse_btn.bind("click",function(){
 			console.log("USER ID:"+user_id);
 			console.log("CK_VALUE:"+ck_value);
-			add_contract_pluse(user_id,ck_value).then(function(xhr){
-				window.location.reload();
-				//console.log("faslkdjflajsldjfjalskjdfjlask");
-				//console.log(xhr);
-			});
+			// add_contract_pluse(user_id,ck_value).then(function(xhr){
+			// 	window.location.reload();
+			// 	//console.log("faslkdjflajsldjfjalskjdfjlask");
+			// 	//console.log(xhr);
+			// });
+
+				var msg={method:"setFriendShip",id:user_id};
+				console.log(msg);
+				chrome.extension.sendMessage(msg, function(response) {
+			  		
+				});
 			
 		});
 
